@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sinemovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="sinemovieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="users" EntityType="Self.users" />
+    <EntitySet Name="comments" EntityType="sinemovieModel.comments" />
+    <EntitySet Name="sysdiagrams" EntityType="sinemovieModel.sysdiagrams" />
+    <EntitySet Name="actors" EntityType="sinemovieModel.actors" />
+    <EntitySet Name="movies" EntityType="sinemovieModel.movies" />
+    <AssociationSet Name="FK_actors_movies" Association="sinemovieModel.FK_actors_movies">
+      <End Role="movies" EntitySet="movies" />
+      <End Role="actors" EntitySet="actors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_comments_movies1" Association="sinemovieModel.FK_comments_movies1">
+      <End Role="movies" EntitySet="movies" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="movie_id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="comment" Type="String" Nullable="false" MaxLength="2500" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="movies" Relationship="sinemovieModel.FK_comments_movies1" FromRole="comments" ToRole="movies" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="actors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="poster" Type="String" Nullable="false" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="movie_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="movies" Relationship="sinemovieModel.FK_actors_movies" FromRole="actors" ToRole="movies" />
+    <Property Name="biography" Type="String" MaxLength="2500" FixedLength="true" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="movies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="release_date" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="time" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="genre" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="director" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="summary" Type="String" Nullable="false" MaxLength="2500" FixedLength="true" Unicode="true" />
+    <Property Name="poster" Type="String" Nullable="false" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="fragman" Type="String" Nullable="false" MaxLength="250" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="actors" Relationship="sinemovieModel.FK_actors_movies" FromRole="movies" ToRole="actors" />
+    <NavigationProperty Name="comments" Relationship="sinemovieModel.FK_comments_movies1" FromRole="movies" ToRole="comments" />
+  </EntityType>
+  <Association Name="FK_actors_movies">
+    <End Type="sinemovieModel.movies" Role="movies" Multiplicity="1" />
+    <End Type="sinemovieModel.actors" Role="actors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="actors">
+        <PropertyRef Name="movie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_comments_movies1">
+    <End Type="sinemovieModel.movies" Role="movies" Multiplicity="1" />
+    <End Type="sinemovieModel.comments" Role="comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="movie_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

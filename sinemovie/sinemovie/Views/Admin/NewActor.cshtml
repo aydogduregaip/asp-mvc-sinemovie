@@ -1,0 +1,35 @@
+﻿@model sinemovie.Models.EntityFramework.actors
+@{
+    ViewBag.Title = "NewActor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #ccc !important;
+        border-radius: 0px !important;
+    }
+</style>
+<br />
+<h2>Yeni Oyuncu Ekle</h2>
+<br />
+
+<form class="form-group" method="post">
+    @Html.TextBoxFor(m => m.name, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Oyuncu Adı", required = "required", name = "name" })
+    @Html.DropDownListFor(m => m.movies.id, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control fw-bold p-2 button-input-round mb-2 select2", required = "required", name = "movie_id" })
+    @Html.DropDownListFor(m => m.gender, new List<SelectListItem>
+       { new SelectListItem{Text="Erkek"},
+         new SelectListItem{Text="Kadın"}}, new { @class = "form-control fw-bold p-2 button-input-round mb-2 mt-2", required = "required" })
+    @Html.TextBoxFor(m => m.age, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Yaş", required = "required" })
+    @Html.TextBoxFor(m => m.poster, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Resim", required = "required" })
+    @Html.TextBoxFor(m => m.country, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Doğum Yeri", required = "required" })
+    @Html.TextAreaFor(m => m.biography, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Biyografi", style = "height: 200px; " })
+    <button type="submit" class="btn btn-primary button-input-round mt-2">Kaydet</button>
+</form>
+
+
+

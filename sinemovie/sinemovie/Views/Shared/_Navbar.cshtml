@@ -1,0 +1,54 @@
+﻿
+<head>
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet" />
+    <link href="~/Content/css/my_style.css" rel="stylesheet" />
+</head>
+<nav class="navbar navbar-expand-lg navbar-light navbar-height">
+    <img src="~/Content/images/image-removebg-preview (2).png" class="logo-height" />
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navbar-togcolor" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link navbar-textcolor ml-5" aria-current="page" href="/Home/Index">Filmler</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link navbar-textcolor ml-5" aria-current="page" href="/Home/Oyuncular">Oyuncular</a>
+            </li>
+        </ul>
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="form-group has-feedback">
+                    <input class="form-control mr-sm-2 modal-round" id="search" type="search" placeholder="Search" aria-label="Search">
+                    <i class="glyphicon glyphicon-user form-control-feedback fa fa-search mr-5" aria-hidden="true"></i>
+
+                </div>
+            </div>
+            @if (User.IsInRole("A"))
+            {
+                <a class="nav-link navbar-textcolor ml-5" aria-current="page" href="/Admin/Index/">Admin Paneli</a>
+            }
+            @if (@HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle navbar-textcolor" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user navbar-textcolor" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">@HttpContext.Current.User.Identity.Name</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Security/Logout">logout</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+
+                <a class="nav-link navbar-textcolor ml-5" aria-current="page" href="/Security/Login">Üye Girişi</a>
+            }
+        </form>
+    </div>
+</nav>
+
+

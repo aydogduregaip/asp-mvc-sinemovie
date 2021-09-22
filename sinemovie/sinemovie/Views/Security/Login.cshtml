@@ -1,0 +1,144 @@
+﻿@model sinemovie.Models.EntityFramework.users
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/css/my_style.css" rel="stylesheet" />
+</head>
+<body>
+    @* Login Post *@
+    @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+    {
+
+        <div class="modal-content modal-dialog modal-lg modal-dialog-centered">
+            <div class="row">
+                <div class="col-md-6 modal-logo">
+                    <picture>
+                        <img src="~/Content/images/cinema (1).png" />
+                    </picture>
+                </div>
+                <div class="col-md-6 modal-round">
+                    <div class="modal-header mx-auto col-4 center-item">
+                        <h5 class="modal-title fw-bold">
+                            <span class="lead">Giriş</span>
+                        </h5>
+                    </div>
+                    <div class="modal-body center-item-grid mx-auto">
+                        @Html.TextBoxFor(m => m.username, new { @class = "form-control text-center fw-bold mb-3 p-2 button-input-round", placeholder = "Kullanıcı Adı ", required = "required" })
+                        @Html.PasswordFor(m => m.password, new { @class = "form-control text-center fw-bold p-2 button-input-round", placeholder = "Parola", required = "required" })
+                    </div>
+                    <div class="modal-footer center-item-grid mx-auto col-6">
+                        <button type="submit" class="btn btn-primary button-input-round">
+                            Giriş Yap
+                        </button>
+                        <button type="button" class="btn btn-primary button-input-round" data-dismiss="modal" data-toggle="modal" data-target="#registerModal" aria-hidden="true">
+                            Üye Ol
+                        </button>
+                        <button type="button" class="btn button-input-round btn-link" data-dismiss="modal" data-toggle="modal" data-target="#forgotModal" aria-hidden="true">
+                            <span>Parolamı Unuttum</span>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+
+    @* Register Post *@
+    @using (Html.BeginForm("Register", "Security", FormMethod.Post))
+    {
+        <div class="modal fade" id="registerModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-md-6 modal-logo">
+                            <picture>
+                                <img src="~/Content/images/cinema (1).png" />
+                            </picture>
+                        </div>
+                        <div class="col-md-6 modal-round">
+                            <button type="button" class="close mt-3 mr-3 button-circle" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="button-circle">&times;</span>
+                            </button>
+                            <div class="modal-header mx-auto col-4 center-item">
+                                <h5 class="modal-title fw-bold">
+                                    <span class="lead">Üye Ol</span>
+                                </h5>
+                            </div>
+                            <div class="modal-body center-item-grid mx-auto">
+                                @Html.TextBoxFor(m => m.username, new { @class = "form-control text-center fw-bold mb-3 p-2 button-input-round", placeholder = "Kullanıcı Adı ", required = "required" })
+                                @Html.TextBoxFor(m => m.email, new { @class = "form-control text-center fw-bold mb-3 p-2 button-input-round", placeholder = "E-posta ", required = "required" })
+                                @Html.PasswordFor(m => m.password, new { @class = "form-control text-center fw-bold p-2 button-input-round", placeholder = "Parola(8 Karakterden Az Olamaz)", required = "required" })
+
+                            </div>
+                            <div class="modal-footer center-item-grid mx-auto col-6">
+                                <button type="submit" class="btn btn-primary button-input-round">
+                                    Üye Ol
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+    @* Forgot Password Post *@
+    @using (Html.BeginForm("ForgotPassword", "Security", FormMethod.Post))
+    {
+        <div class="modal fade" id="forgotModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-md-6 modal-logo">
+                            <picture>
+                                <img src="~/Content/images/cinema (1).png" />
+                            </picture>
+                        </div>
+                        <div class="col-md-6 modal-round">
+                            <button type="button" class="close mt-3 mr-3 button-circle" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="button-circle">&times;</span>
+                            </button>
+                            <div class="modal-header mx-auto col-4 center-item">
+                                <h5 class="modal-title fw-bold">
+                                    <span class="lead">Parolamı Unuttum</span>
+                                </h5>
+                            </div>
+                            <div class="modal-body center-item-grid mx-auto">
+                                @Html.TextBoxFor(m => m.email, new { @class = "form-control text-center fw-bold mb-3 p-2 button-input-round", placeholder = "E-posta ", required = "required" })
+                            </div>
+                            <div class="modal-footer center-item-grid mx-auto col-6">
+                                <button type="submit" class="btn btn-primary button-input-round">
+                                    Parolayı Sıfırla
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

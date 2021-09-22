@@ -1,0 +1,46 @@
+﻿@model sinemovie.Models.IEnumerable.MoviesComments
+@{
+    ViewBag.Title = "OyuncuDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var x in Model.Actors)
+{
+
+    <div class="m-5">
+        <div>
+            <div class="row">
+                <div class="float-left">
+                    <div class="card" style="width: 15rem;">
+                        <img class="card-img-top" src="@x.poster" alt="Card image cap">
+                        
+                    </div>
+                </div>
+                <div class="ml-5" style="max-width: 100vh; width:auto;">
+                    <div>
+                        <h5>
+                            <span class="lead font-weight-bold" style="word-wrap: break-word; max-width: 100vh;">@x.name</span>
+                        </h5>
+                    </div>
+                    <hr />
+                    <div class="d-block">
+                        <div class="mt-2">
+                            <span class="font-weight-bold">Cinsiyet:<span class="ml-2 font-weight-normal">@x.gender</span></span>
+                        </div>
+                        <div class="mt-2">
+                            <sapan class="font-weight-bold">Yaşı:<span class="ml-2 font-weight-normal">@x.age Yaşında</span></sapan>
+                        </div>
+
+                        <div class="mt-2">
+                            <span class="font-weight-bold">Doğum Yeri:<span class="ml-2 font-weight-normal">@x.country</span></span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="font-weight-bold">Biyografi:<span class="ml-2 font-weight-normal">@x.biography</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

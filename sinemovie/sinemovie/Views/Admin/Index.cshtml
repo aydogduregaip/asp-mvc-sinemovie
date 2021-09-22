@@ -1,0 +1,46 @@
+﻿@using sinemovie.Models.EntityFramework
+@model List<movies>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Filmler Listesi</h2>
+<br />
+<a href="/Admin/NewMovie/" class="btn btn-success mb-2"><i class="fas fa-plus-square"></i>  Yeni Film</a>
+
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Film Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Sitede Görüntüle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var y in Model)
+        {
+            <tr>
+                <td>@y.id</td>
+                <td>@y.name</td>
+                <td><a href="/Admin/DeleteMovie/@y.id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                <td><a href="/Admin/DetailsMovie/@y.id" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+            <td><a href="/Home/FilmDetay/@y.id" class="btn btn-dark" target="_blank"><i class="fas fa-eye"></i></a></td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Film Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Sitede Görüntüle</th>
+        </tr>
+    </tfoot>
+</table>
+
+

@@ -1,0 +1,21 @@
+﻿@model sinemovie.Models.EntityFramework.comments
+@{
+    ViewBag.Title = "EditComment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yorum Güncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("UpdateComment", "Admin", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.id, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "ID", required = "required", @readonly = "readonly" })
+    @Html.TextBoxFor(m => m.username, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Adı", required = "required", @readonly = "readonly" })
+    @Html.TextBoxFor(m => m.date, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Vizyon Tarihi", required = "required", @readonly = "readonly" })
+    @Html.TextBoxFor(m => m.movies.name, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Süresi", required = "required", @readonly = "readonly" })
+    @Html.TextAreaFor(m => m.comment, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Türü", required = "required" })
+
+    <button type="submit" class="btn btn-primary button-input-round">Kaydet</button>
+}
+

@@ -1,0 +1,27 @@
+﻿@using sinemovie.Models.EntityFramework
+@model PagedList.IPagedList<actors>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Oyuncular";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+    @foreach (var actors in Model)
+    {
+        <div class="card m-3 d-inline-flex border-0" style="width:180px">
+            <a href="/Home/OyuncuDetay/@actors.id" target="_self">
+                <img class="card-img-top rounded" src="@actors.poster" alt="Card image">
+            </a>
+            <div class="card-img-bottom" style="text-align: center">
+                <h4 class="card-title text-size">@actors.name</h4>
+            </div>
+        </div>
+    }
+    <div style="text-align: center">
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Oyuncular", new { sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+
+</body>

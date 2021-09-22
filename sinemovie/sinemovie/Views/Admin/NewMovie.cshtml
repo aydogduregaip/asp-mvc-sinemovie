@@ -1,0 +1,19 @@
+﻿@model sinemovie.Models.EntityFramework.movies
+@{
+    ViewBag.Title = "NewMovie";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Film Ekle</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.TextBoxFor(m => m.name, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Adı", required = "required" })
+    @Html.TextBoxFor(m => m.release_date, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Vizyon Tarihi", required = "required" })
+    @Html.TextBoxFor(m => m.time, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Süresi", required = "required" })
+    @Html.TextBoxFor(m => m.genre, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Türü", required = "required" })
+    @Html.TextBoxFor(m => m.director, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Yönetmeni", required = "required" })
+    @Html.TextBoxFor(m => m.poster, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Poster URL", required = "required" })
+    @Html.TextBoxFor(m => m.fragman, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Fragman URL", required = "required" })
+    @Html.TextAreaFor(m => m.summary, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Konusu", required = "required" ,style = "height: 200px; " })
+    <button type="submit" class="btn btn-primary button-input-round">Kaydet</button>
+</form>

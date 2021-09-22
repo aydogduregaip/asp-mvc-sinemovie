@@ -1,0 +1,27 @@
+﻿@model sinemovie.Models.EntityFramework.actors
+@{
+    ViewBag.Title = "EditActor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<br />
+<h2>Oyuncu Güncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("UpdateActor", "Admin", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.id, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", required = "required", @readonly = "readonly" })
+    @Html.TextBoxFor(m => m.movie_id, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", required = "required", @readonly = "readonly" })
+    @Html.TextBoxFor(m => m.name, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Adı", required = "required" })
+    @Html.DropDownListFor(m => m.gender, new List<SelectListItem>
+      { new SelectListItem{Text="Erkek"},
+        new SelectListItem{Text="Kadın"}}, new { @class = "form-control fw-bold p-2 button-input-round mb-2 mt-2", required = "required" })
+    @Html.TextBoxFor(m => m.age, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2 mt-2", placeholder = "Yaş", required = "required" })
+    @Html.TextBoxFor(m => m.poster, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Resim", required = "required" })
+    @Html.TextBoxFor(m => m.country, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Doğum Yeri", required = "required" })
+    @Html.TextAreaFor(m => m.biography, new { @class = "form-control fw-bold mb-3 p-2 button-input-round mb-2", placeholder = "Biyografi", style = "height: 200px; " })
+
+    <button type="submit" class="btn btn-primary button-input-round">Kaydet</button>
+}

@@ -1,0 +1,166 @@
+.pagination {
+    display: inline-block !important;
+    padding-left: 0 !important;
+    margin: 20px 0 !important;
+    border-radius: 4px !important;
+}
+
+    .pagination > li {
+        display: inline !important;
+    }
+
+        .pagination > li > a,
+        .pagination > li > span {
+            position: relative !important;
+            float: left !important;
+            padding: 6px 12px !important;
+            margin-left: -1px !important;
+            line-height: 1.428571429 !important;
+            text-decoration: none !important;
+            background-color: #ffffff !important;
+            border: 1px solid #dddddd !important;
+        }
+
+        .pagination > li:first-child > a,
+        .pagination > li:first-child > span {
+            margin-left: 0 !important;
+            border-bottom-left-radius: 4px !important;
+            border-top-left-radius: 4px !important;
+        }
+
+        .pagination > li:last-child > a,
+        .pagination > li:last-child > span {
+            border-top-right-radius: 4px !important;
+            border-bottom-right-radius: 4px !important;
+        }
+
+        .pagination > li > a:hover,
+        .pagination > li > span:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:focus {
+            background-color: #eeeeee !important;
+        }
+
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus {
+        z-index: 2 !important;
+        color: #ffffff !important;
+        cursor: default !important;
+        background-color: #77091c !important;
+        border-color: #77091c !important;
+    }
+
+    .pagination > .disabled > span,
+    .pagination > .disabled > a,
+    .pagination > .disabled > a:hover,
+    .pagination > .disabled > a:focus {
+        color: #999999 !important;
+        cursor: not-allowed !important;
+        background-color: #ffffff !important;
+        border-color: #dddddd !important;
+    }
+
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+    padding: 10px 16px !important;
+    font-size: 18px !important;
+}
+
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+    border-bottom-left-radius: 6px !important;
+    border-top-left-radius: 6px !important;
+}
+
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+    border-top-right-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+}
+
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+    border-bottom-left-radius: 3px !important;
+    border-top-left-radius: 3px !important;
+}
+
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
+}
+
+.pager {
+    padding-left: 0 !important;
+    margin: 20px 0 !important;
+    text-align: center !important;
+    list-style: none !important;
+}
+
+    .pager:before,
+    .pager:after {
+        display: table !important;
+        content: " " !important;
+    }
+
+    .pager:after {
+        clear: both !important;
+    }
+
+    .pager:before,
+    .pager:after {
+        display: table !important;
+        content: " " !important;
+    }
+
+    .pager:after {
+        clear: both !important;
+    }
+
+    .pager li {
+        display: inline !important;
+    }
+
+        .pager li > a,
+        .pager li > span {
+            display: inline-block !important;
+            padding: 5px 14px !important;
+            background-color: #ffffff !important;
+            border: 1px solid #dddddd !important;
+            border-radius: 15px !important;
+        }
+
+            .pager li > a:hover,
+            .pager li > a:focus {
+                text-decoration: none !important;
+                background-color: #eeeeee !important;
+            }
+
+    .pager .next > a,
+    .pager .next > span {
+        float: right !important;
+    }
+
+    .pager .previous > a,
+    .pager .previous > span {
+        float: left !important;
+    }
+
+    .pager .disabled > a,
+    .pager .disabled > a:hover,
+    .pager .disabled > a:focus,
+    .pager .disabled > span {
+        color: #999999 !important;
+        cursor: not-allowed !important;
+        background-color: #ffffff !important;
+    }

@@ -1,0 +1,26 @@
+﻿@using sinemovie.Models.EntityFramework
+@model PagedList.IPagedList<movies>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<body>
+    @foreach (var movies in Model)
+    {
+        <div class="card m-3 d-inline-flex border-0" style="width:180px">
+            <a href="/Home/FilmDetay/@movies.id" target="_self">
+                <img class="card-img-top rounded" src="@movies.poster" alt="Card image">
+            </a>
+            <div class="card-img-bottom" style="text-align: center">
+                <h4 class="card-title text-size">@movies.name</h4>
+            </div>
+        </div>
+    }
+    <div style="text-align: center">
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+
+</body>
